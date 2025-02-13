@@ -3,6 +3,7 @@
 
 /*
  *********************************************************************************************************
+ *
  *                                            EXIT WITH ERRNO
  * 
  * Description: Print the format string s to stderr file stream, and perror. 

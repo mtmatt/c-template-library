@@ -1,5 +1,9 @@
+#ifndef CDS_UTIL_H
+#define CDS_UTIL_H
+
 /*
  *********************************************************************************************************
+ *
  *                                            EXIT WITH ERRNO
  * 
  * Description: Print the format string s to stderr file stream, and perror. 
@@ -13,12 +17,14 @@
  * Notes: none
  *********************************************************************************************************
  */
-#ifndef CDS_UTIL_H
-#define CDS_UTIL_H
-
-#define ERR_EXIT(s, ...) do { fprintf(stderr, s, ...); perror(""); exit(errno); } \
+#define ERR_EXIT(s, ...) do { fprintf(stderr, s, __VA_ARGS__); perror(""); exit(errno); } \
   while(0);
 
+/*
+ *********************************************************************************************************
+ *                                             MISCELLANEOUS
+ *********************************************************************************************************
+ */
 int max(int a, int b);
 int min(int a, int b);
 
