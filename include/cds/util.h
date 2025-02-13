@@ -27,9 +27,7 @@
  * 
  * Description: Convert the void pointer to type t and deference
  * 
- * Arguments: s   is a format string follows the rule defined in stdio.h 
- *
- *            ... are those inserted values described in the format string
+ * Arguments: t   is the type the caller expected the data should be
  *
  * Returns: none
  * 
