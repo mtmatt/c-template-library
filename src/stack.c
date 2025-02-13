@@ -5,7 +5,7 @@
 
 #include "stack.h"
 
-struct cds_stack cds_stack_new(const int element_size) {
+struct cds_stack cds_stack_new(const size_t element_size) {
   struct cds_stack new_stack;
   new_stack.data = (char*) malloc(element_size);
   new_stack.size = 0;
@@ -24,7 +24,7 @@ void cds_stack_delete(struct cds_stack *stack) {
 int cds_stack_push(struct cds_stack *stack, const void *new_element) {
   if (stack->size == stack->capacity) {
     stack->capacity <<= 1;  // cap * 2
-    stack->data = realloc(stack->data, stack->capacity * stack->element_size);
+    stack->data = (char*) realloc(stack->data, stack->capacity * stack->element_size);
     if (stack->data == NULL) {
       return errno;
     }
