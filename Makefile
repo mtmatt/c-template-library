@@ -11,7 +11,7 @@ INCLUDE_DIR = ./include/cds
 TEST_INCLUDE_DIR = ./include
 
 $(OUT_DIR)/$(NAME): $(OBJS) \
-    $(patsubst $(SRC_DIR)/%.c,$(INCLUDE_DIR)/%.h,$(wildcard $(SRC_DIR)/*.c))
+    $(patsubst $(SRC_DIR)/%.h,$(INCLUDE_DIR)/%.h,$(wildcard $(SRC_DIR)/*.h))
 	ar rcs $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c dirmake
