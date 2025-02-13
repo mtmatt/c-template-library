@@ -22,6 +22,24 @@
 
 /*
  *********************************************************************************************************
+ *
+ *                                  CONVERT void* TO t AND DEREFERENCE
+ * 
+ * Description: Convert the void pointer to type t and deference
+ * 
+ * Arguments: s   is a format string follows the rule defined in stdio.h 
+ *
+ *            ... are those inserted values described in the format string
+ *
+ * Returns: none
+ * 
+ * Notes: none
+ *********************************************************************************************************
+ */
+#define CONV(t) *(t*)
+
+/*
+ *********************************************************************************************************
  *                                             MISCELLANEOUS
  *********************************************************************************************************
  */
