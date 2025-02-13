@@ -2,6 +2,7 @@
 #define CDS_STACK_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 typedef struct cds_stack {
   char *data;
@@ -88,6 +89,38 @@ int cds_stack_pop(struct cds_stack *stack);
  * Notes: none
  *********************************************************************************************************
  */
-void* cds_stack_top(struct cds_stack *stack);
+void* cds_stack_top(const struct cds_stack *stack);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS STACK SIZE
+ * 
+ * Description: Returns the number of elements in the stack.
+ * 
+ * Arguments: stack   A pointer to the struct cds_stack instance.
+ *
+ * Returns: The number of elements in the stack.
+ * 
+ * Notes: The caller should ensure that the stack pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+size_t cds_stack_size(const struct cds_stack *stack);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS STACK EMPTY
+ * 
+ * Description: Checks if the stack is empty.
+ * 
+ * Arguments: stack   A pointer to the struct cds_stack instance.
+ *
+ * Returns: true if the stack is empty, false otherwise.
+ * 
+ * Notes: The caller should ensure that the stack pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+bool cds_stack_empty(const struct cds_stack *stack);
 
 #endif

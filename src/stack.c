@@ -42,9 +42,17 @@ int cds_stack_pop(struct cds_stack *stack) {
   return 0;
 }
 
-void* cds_stack_top(struct cds_stack *stack) {
+void* cds_stack_top(const struct cds_stack *stack) {
   if (stack->size == 0) {
     return NULL;
   }
-  return (void*) (stack->data + stack->size * stack->element_size);
+  return (void*) (stack->data + (stack->size - 1) * stack->element_size);
+}
+
+size_t cds_stack_size(const struct cds_stack *stack) {
+  return stack->size;
+}
+
+bool cds_stack_empty(const struct cds_stack *stack) {
+  return stack->size == 0;
 }

@@ -51,3 +51,11 @@ void* cds_array_at(const struct cds_array *array, const size_t index) {
 void* cds_array_get(const struct cds_array *array, const size_t index) {
   return (void*) (array->data + index * array->element_size);
 }
+
+size_t cds_array_size(const struct cds_array *array) {
+  return array->size;
+}
+
+bool cds_array_empty(const struct cds_array *array) {
+  return array->size == 0;
+}

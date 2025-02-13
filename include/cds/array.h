@@ -2,6 +2,7 @@
 #define CDS_ARRAY_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 typedef struct cds_array {
   char *data;
@@ -107,5 +108,37 @@ void* cds_array_at(const struct cds_array *array, size_t index);
  *********************************************************************************************************
  */
 void *cds_array_get(const struct cds_array *array, size_t index);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS ARRAY SIZE
+ * 
+ * Description: Returns the number of elements in the dynamic array.
+ * 
+ * Arguments: array   A pointer to the struct cds_array instance.
+ *
+ * Returns: The number of elements in the array.
+ * 
+ * Notes: The caller should ensure that the array pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+size_t cds_array_size(const struct cds_array *array);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS ARRAY EMPTY
+ * 
+ * Description: Checks if the dynamic array is empty.
+ * 
+ * Arguments: array   A pointer to the struct cds_array instance.
+ *
+ * Returns: true if the array is empty, false otherwise.
+ * 
+ * Notes: The caller should ensure that the array pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+bool cds_array_empty(const struct cds_array *array);
 
 #endif
