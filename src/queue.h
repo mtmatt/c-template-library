@@ -42,7 +42,7 @@ typedef struct cds_queue {
  * Notes: The caller is responsible for freeing the memory allocated for the queue using cds_queue_delete.
  *********************************************************************************************************
  */
-struct cds_queue cds_queue_new(size_t element_size);
+struct cds_queue cds_queue_new(const size_t element_size);
 
 /*
  *********************************************************************************************************

@@ -6,7 +6,7 @@
 
 #ifdef CDS_QUEUE_IMPL_WITH_ARRAY
 
-struct cds_queue cds_queue_new(size_t element_size) {
+struct cds_queue cds_queue_new(const size_t element_size) {
   struct cds_queue new_queue = {
     .data = (char*) malloc(element_size),
     .size = 0,
@@ -42,10 +42,8 @@ int cds_queue_push(struct cds_queue *queue, const void *new_element) {
         queue->size * queue->element_size);
     }
   }
-  memcpy(queue->data +
-    ((queue->front + queue->size) % queue->capacity) * queue->element_size,
-    new_element,
-    queue->element_size);
+  memcpy(queue->data + ((queue->front + queue->size) % queue->capacity) * queue->element_size,
+    new_element, queue->element_size);
   queue->size++;
   return 0;
 }
