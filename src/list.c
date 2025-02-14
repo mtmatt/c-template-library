@@ -97,7 +97,7 @@ int cds_list_pop_front(struct cds_list *list) {
   list->head = head->next;
   list->head->prev = NULL;
   if (list->head == NULL) {
-    list->tail = NULL;
+    list->tail = head;
   }
   cds_list_node_delete(head);
   list->size--;
@@ -112,7 +112,7 @@ int cds_list_pop_back(struct cds_list *list) {
   list->tail = tail->prev;
   list->tail->next = NULL;
   if (list->tail == NULL) {
-    list->head = NULL;
+    list->head = tail;
   }
   cds_list_node_delete(tail);
   list->size--;
@@ -169,4 +169,40 @@ int cds_list_concat(struct cds_list *first, struct cds_list *second) {
   second->head = second->tail = NULL;
   cds_list_delete(second);
   return 0;
+}
+
+void* cds_list_get_head(struct cds_list *list) {
+  if (list->head == NULL) {
+    return NULL;
+  }
+  return list->head->data;
+}
+
+void* cds_list_get_tail(struct cds_list *list) {
+  if (list->tail == NULL) {
+    return NULL;
+  }
+  return list->tail->data;
+}
+
+struct cds_list_node* cds_list_search(struct cds_list *list, void *data, int (*cmp)(const void *, const void *)) {
+  if (list == NULL || data == NULL || cmp == NULL) {
+    return NULL;
+  }
+  struct cds_list_node *current = list->head;
+  while (current != NULL) {
+    if (cmp(current->data, data) == 0) {
+      return current;
+    }
+    current = current->next;
+  }
+  return NULL;
+}
+
+size_t cds_list_size(struct cds_list *list) {
+  return list->size;
+}
+
+bool cds_list_empty(struct cds_list *list) {
+  return list->size == 0;
 }

@@ -46,7 +46,7 @@ void cds_list_node_delete(struct cds_list_node *node);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST NODE SET DATA
+ *                                        CDS LIST NODE SET DATA
  * 
  * Description: Sets the data for a given list node.
  * 
@@ -64,7 +64,7 @@ void cds_list_node_set_data(struct cds_list_node *node, void *data, const size_t
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST NODE SET NEXT
+ *                                        CDS LIST NODE SET NEXT
  * 
  * Description: Sets the next for a given list node.
  * 
@@ -81,7 +81,7 @@ void cds_list_node_set_next(struct cds_list_node *node, struct cds_list_node *ne
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST NODE SET PREV
+ *                                        CDS LIST NODE SET PREV
  * 
  * Description: Sets the prev for a given list node.
  * 
@@ -103,7 +103,7 @@ typedef struct cds_list {
 /*
  *********************************************************************************************************
  *
- *                                            CDS LIST NEW
+ *                                             CDS LIST NEW
  * 
  * Description: Creates a new dynamic list with the specified element size.
  * 
@@ -135,7 +135,7 @@ void cds_list_delete(struct cds_list *list);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST PUSH FRONT
+ *                                          CDS LIST PUSH FRONT
  * 
  * Description: Inserts a new element at the front of the list.
  * 
@@ -152,7 +152,7 @@ int cds_list_push_front(struct cds_list *list, void *new_element);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST PUSH BACK
+ *                                          CDS LIST PUSH BACK
  * 
  * Description: Inserts a new element at the end of the list.
  * 
@@ -169,7 +169,7 @@ int cds_list_push_back(struct cds_list *list, void *new_element);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST POP FRONT
+ *                                          CDS LIST POP FRONT
  * 
  * Description: Removes the element at the front of the list.
  * 
@@ -185,7 +185,7 @@ int cds_list_pop_front(struct cds_list *list);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST POP BACK
+ *                                           CDS LIST POP BACK
  * 
  * Description: Removes the element at the end of the list.
  * 
@@ -201,7 +201,7 @@ int cds_list_pop_back(struct cds_list *list);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST INSERT
+ *                                            CDS LIST INSERT
  * 
  * Description: Inserts a new element after the specified position in the list.
  * 
@@ -219,7 +219,7 @@ int cds_list_insert(struct cds_list *list, struct cds_list_node *position, void 
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST REMOVE
+ *                                            CDS LIST REMOVE
  * 
  * Description: Remove an element at the specified position in the list.
  * 
@@ -236,7 +236,7 @@ int cds_list_remove(struct cds_list *list, struct cds_list_node *position);
 /*
  *********************************************************************************************************
  *
- *                                         CDS LIST CONCAT
+ *                                            CDS LIST CONCAT
  * 
  * Description: Concatenates the second list to the end of the first list.
  * 
@@ -250,5 +250,89 @@ int cds_list_remove(struct cds_list *list, struct cds_list_node *position);
  *********************************************************************************************************
  */
 int cds_list_concat(struct cds_list *first, struct cds_list *second);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                           CDS LIST GET HEAD
+ * 
+ * Description: Retrieves the data at the head of the list.
+ * 
+ * Arguments: list   A pointer to the struct cds_list instance.
+ *
+ * Returns: A pointer to the data at the head of the list, or NULL if the list is empty.
+ * 
+ * Notes: The caller is responsible for ensuring that the list pointer is valid.
+ *********************************************************************************************************
+ */
+void* cds_list_get_head(struct cds_list *list);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                           CDS LIST GET TAIL
+ * 
+ * Description: Retrieves the data at the tail of the list.
+ * 
+ * Arguments: list   A pointer to the struct cds_list instance.
+ *
+ * Returns: A pointer to the data at the tail of the list, or NULL if the list is empty.
+ * 
+ * Notes: The caller is responsible for ensuring that the list pointer is valid.
+ *********************************************************************************************************
+ */
+void* cds_list_get_tail(struct cds_list *list);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS LIST SEARCH
+ * 
+ * Description: Searches for an element in the list.
+ * 
+ * Arguments: list   A pointer to the struct cds_list instance.
+ *            data   A pointer to the data to be searched in the list.
+ *            cmp    A function pointer to the comparison function. It should return 0 if the elements are
+ *                   equal, and non-zero if the elements are not equal.
+ *
+ * Returns: A pointer to the list node containing the data, or NULL if the data is not found (e.g., the
+ *          data is not in the list, the list is NULL, or the cmp is NULL).
+ * 
+ * Notes: The caller is responsible for ensuring that the list pointer and cmp function pointer are valid.
+ *********************************************************************************************************
+ */
+struct cds_list_node* cds_list_search(struct cds_list *list, void *data, int (*cmp)(const void *, const void *));
+
+/*
+ *********************************************************************************************************
+ *
+ *                                             CDS LIST SIZE
+ * 
+ * Description: Retrieves the number of elements in the list.
+ * 
+ * Arguments: list   A pointer to the struct cds_list instance.
+ *
+ * Returns: The number of elements in the list.
+ * 
+ * Notes: The caller is responsible for ensuring that the list pointer is valid.
+ *********************************************************************************************************
+ */
+size_t cds_list_size(struct cds_list *list);
+
+/*
+ *********************************************************************************************************
+ *
+ *                                           CDS LIST IS EMPTY
+ * 
+ * Description: Checks if the list is empty.
+ * 
+ * Arguments: list   A pointer to the struct cds_list instance.
+ *
+ * Returns: true if the list is empty, false otherwise.
+ * 
+ * Notes: The caller is responsible for ensuring that the list pointer is valid.
+ *********************************************************************************************************
+ */
+bool cds_list_empty(struct cds_list *list);
 
 #endif

@@ -28,6 +28,10 @@ void test_list_node() {
   cds_list_node_delete(prev_node);
 }
 
+int cmp(const void *a, const void *b) {
+  return CONV(int) a - CONV(int) b;
+}
+
 void test_list() {
   struct cds_list list = cds_list_new(sizeof(int));
   assert(list.size == 0);
@@ -72,4 +76,36 @@ void test_list() {
   assert(list.element_size == 0);
   assert(list.head == NULL);
   assert(list.tail == NULL);
+
+  list = cds_list_new(sizeof(int));
+  int data4 = 4;
+  assert(cds_list_push_back(&list, &data4) == 0);
+  assert(list.size == 1);
+  assert(CONV(int) list.head->data == 4);
+  assert(CONV(int) cds_list_get_head(&list) == 4);
+  assert(CONV(int) cds_list_get_tail(&list) == 4);
+
+  int data5 = 5;
+  assert(cds_list_push_back(&list, &data5) == 0);
+  assert(list.size == 2);
+  assert(CONV(int) cds_list_get_head(&list) == 4);
+  assert(CONV(int) cds_list_get_tail(&list) == 5);
+
+  struct cds_list_node *found_node = cds_list_search(&list, &data5, cmp);
+  assert(found_node != NULL);
+  assert(CONV(int) found_node->data == 5);
+
+  found_node = cds_list_search(&list, &data3, cmp);
+  assert(found_node == NULL);
+
+  assert(cds_list_size(&list) == 2);
+  assert(!cds_list_empty(&list));
+
+  assert(cds_list_pop_front(&list) == 0);
+  assert(cds_list_size(&list) == 1);
+  assert(CONV(int) cds_list_get_head(&list) == 5);
+
+  // assert(cds_list_pop_back(&list) == 0);
+  // assert(cds_list_size(&list) == 0);
+  // assert(cds_list_is_empty(&list));
 }
