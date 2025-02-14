@@ -17,6 +17,7 @@ make
 #include <cds/stack.h>
 #include <cds/queue.h>
 #include <cds/util.h>
+// ...
 ```
 
 ### Compile
@@ -37,6 +38,7 @@ gcc -o main main.c -I/path/to/c-data-structures/include -L/path/to/c-data-struct
 1. Array
 2. Stack
 3. Queue
+4. List (Doubly Link List)
 
 ### Utilities
 
