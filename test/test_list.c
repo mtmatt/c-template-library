@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdio.h>
 #include <string.h>
 
 #include <cds/list.h>
@@ -105,7 +106,8 @@ void test_list() {
   assert(cds_list_size(&list) == 1);
   assert(CONV(int) cds_list_get_head(&list) == 5);
 
-  // assert(cds_list_pop_back(&list) == 0);
-  // assert(cds_list_size(&list) == 0);
-  // assert(cds_list_is_empty(&list));
+  assert(cds_list_pop_back(&list) == 0);
+  assert(cds_list_size(&list) == 0);
+  assert(cds_list_empty(&list));
+  cds_list_delete(&list);
 }

@@ -95,11 +95,14 @@ int cds_list_pop_front(struct cds_list *list) {
   }
   struct cds_list_node *head = list->head;
   list->head = head->next;
-  list->head->prev = NULL;
-  if (list->head == NULL) {
-    list->tail = head;
+  if (list->head != NULL) {
+    list->head->prev = NULL;
+  } else {
+    list->tail = NULL;
   }
-  cds_list_node_delete(head);
+  if (head != NULL) {
+    cds_list_node_delete(head);
+  }
   list->size--;
   return 0;
 }
@@ -110,11 +113,14 @@ int cds_list_pop_back(struct cds_list *list) {
   }
   struct cds_list_node *tail = list->tail;
   list->tail = tail->prev;
-  list->tail->next = NULL;
-  if (list->tail == NULL) {
-    list->head = tail;
+  if (list->tail != NULL) {
+    list->tail->next = NULL;
+  } else {
+    list->head = NULL;
   }
-  cds_list_node_delete(tail);
+  if (tail != NULL) {
+    cds_list_node_delete(tail);
+  }
   list->size--;
   return 0;
 }
