@@ -139,8 +139,8 @@ void cds_list_delete(struct cds_list *list);
  * 
  * Description: Inserts a new element at the front of the list.
  * 
- * Arguments: list         A pointer to the struct cds_list instance.
- *            new_element  A pointer to the new element to be added to the list.
+ * Arguments: list          A pointer to the struct cds_list instance.
+ *            new_element   A pointer to the new element to be added to the list.
  *
  * Returns: 0 on success, -1 on failure (e.g., memory allocation failure).
  * 
@@ -156,8 +156,8 @@ int cds_list_push_front(struct cds_list *list, void *new_element);
  * 
  * Description: Inserts a new element at the end of the list.
  * 
- * Arguments: list         A pointer to the struct cds_list instance.
- *            new_element  A pointer to the new element to be added to the list.
+ * Arguments: list          A pointer to the struct cds_list instance.
+ *            new_element   A pointer to the new element to be added to the list.
  *
  * Returns: 0 on success, -1 on failure (e.g., memory allocation failure).
  * 
@@ -205,9 +205,9 @@ int cds_list_pop_back(struct cds_list *list);
  * 
  * Description: Inserts a new element after the specified position in the list.
  * 
- * Arguments: list         A pointer to the struct cds_list instance.
- *            position     A pointer to the list node after which the new element will be inserted.
- *            new_element  A pointer to the new element to be added to the list.
+ * Arguments: list          A pointer to the struct cds_list instance.
+ *            position      A pointer to the list node after which the new element will be inserted.
+ *            new_element   A pointer to the new element to be added to the list.
  *
  * Returns: 0 on success, -1 on failure (e.g., memory allocation failure).
  * 
@@ -223,8 +223,8 @@ int cds_list_insert(struct cds_list *list, struct cds_list_node *position, void 
  * 
  * Description: Remove an element at the specified position in the list.
  * 
- * Arguments: list         A pointer to the struct cds_list instance.
- *            position     A pointer to the list node after which the new element will be removed.
+ * Arguments: list       A pointer to the struct cds_list instance.
+ *            position   A pointer to the list node after which the new element will be removed.
  *
  * Returns: 0 on success, -1 on failure (e.g., position is NULL).
  * 
@@ -240,8 +240,8 @@ int cds_list_remove(struct cds_list *list, struct cds_list_node *position);
  * 
  * Description: Concatenates the second list to the end of the first list.
  * 
- * Arguments: first   A pointer to the first struct cds_list instance.
- *            second  A pointer to the second struct cds_list instance.
+ * Arguments: first    A pointer to the first struct cds_list instance.
+ *            second   A pointer to the second struct cds_list instance.
  *
  * Returns: 0 on success, -1 on failure (e.g., invalid list pointers).
  * 

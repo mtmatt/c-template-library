@@ -11,5 +11,6 @@
 #include <cds/queue.h>
 #include <cds/util.h>
 #include <cds/list.h>
+#include <cds/string.h>
 
 #endif

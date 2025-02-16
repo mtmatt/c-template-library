@@ -8,9 +8,8 @@
  * 
  * Description: Print the format string s to stderr file stream, and perror. 
  * 
- * Arguments: s   is a format string follows the rule defined in stdio.h 
- *
- *            ... are those inserted values described in the format string
+ * Arguments: s    is a format string follows the rule defined in stdio.h 
+ *            ...  are those inserted values described in the format string
  *
  * Returns: none
  * 
