@@ -49,8 +49,8 @@ void cds_stack_delete(struct cds_stack *stack);
  * 
  * Description: Adds a new element to the top of the stack.
  * 
- * Arguments: stack        A pointer to the struct cds_stack instance.
- *            new_element  A pointer to the element to be added to the stack.
+ * Arguments: stack         A pointer to the struct cds_stack instance.
+ *            new_element   A pointer to the element to be added to the stack.
  *
  * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
  * 

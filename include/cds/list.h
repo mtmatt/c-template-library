@@ -322,7 +322,7 @@ size_t cds_list_size(struct cds_list *list);
 /*
  *********************************************************************************************************
  *
- *                                           CDS LIST IS EMPTY
+ *                                            CDS LIST EMPTY
  * 
  * Description: Checks if the list is empty.
  * 

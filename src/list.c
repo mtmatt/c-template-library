@@ -191,7 +191,8 @@ void* cds_list_get_tail(struct cds_list *list) {
   return list->tail->data;
 }
 
-struct cds_list_node* cds_list_search(struct cds_list *list, void *data, int (*cmp)(const void *, const void *)) {
+struct cds_list_node* cds_list_search(struct cds_list *list, void *data, 
+    int (*cmp)(const void *, const void *)) {
   if (list == NULL || data == NULL || cmp == NULL) {
     return NULL;
   }

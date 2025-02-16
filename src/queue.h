@@ -67,8 +67,8 @@ void cds_queue_delete(struct cds_queue *queue);
  * 
  * Description: Adds a new element to the end of the queue.
  * 
- * Arguments: queue        A pointer to the struct cds_queue instance.
- *            new_element  A pointer to the element to be added to the queue.
+ * Arguments: queue         A pointer to the struct cds_queue instance.
+ *            new_element   A pointer to the element to be added to the queue.
  *
  * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
  * 
