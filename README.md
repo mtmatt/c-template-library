@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/mtmattqq/c-data-structures.git # or download the zip
+git clone https://github.com/mtmatt/c-data-structures.git # or download the zip
 cd c-data-structures
 make
 ```
@@ -39,6 +39,7 @@ gcc -o main main.c -I/path/to/c-data-structures/include -L/path/to/c-data-struct
 2. Stack
 3. Queue
 4. List (Doubly Link List)
+5. String
 
 ### Utilities
 
