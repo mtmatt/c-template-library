@@ -49,8 +49,8 @@ void cds_array_delete(struct cds_array *array);
  * 
  * Description: Adds a new element to the end of the dynamic array.
  * 
- * Arguments: array        A pointer to the struct cds_array instance.
- *            new_element  A pointer to the element to be added to the array.
+ * Arguments: array         A pointer to the struct cds_array instance.
+ *            new_element   A pointer to the element to be added to the array.
  *
  * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
  * 
