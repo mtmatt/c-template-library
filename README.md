@@ -1,4 +1,4 @@
-# C Data Structures Library
+# C Template Library
 
 ## Installation
 
@@ -26,6 +26,8 @@ make
 gcc -o main main.c -I/path/to/c-data-structures/include -L/path/to/c-data-structures/lib -lcds
 ```
 
+## Data Structures
+
 ### Functions in common
 
 1. `cds_<data structure name>_new`: create a new data structure
@@ -33,7 +35,7 @@ gcc -o main main.c -I/path/to/c-data-structures/include -L/path/to/c-data-struct
 3. `cds_<data structure name>_size`: get the number of elements in a data structure
 4. `cds_<data structure name>_empty`: check if a data structure is empty
 
-### Data structures
+### Structs
 
 1. Array
 2. Stack
