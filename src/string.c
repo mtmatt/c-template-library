@@ -50,11 +50,11 @@ void cds_string_delete(struct cds_string *string) {
   string->size = string->capacity = 0;
 }
  
-const char* cds_string_get(const struct cds_string *string) {
+char* cds_string_get(const struct cds_string *string) {
   if (string->capacity != CDS_STRING_OPT_CAPACITY) {
     return string->data;
   }
-  return string->opt_data;
+  return (char*) string->opt_data;
 }
 
 size_t cds_string_size(const struct cds_string *string) {
@@ -129,5 +129,46 @@ int cds_string_concat(struct cds_string *first, const struct cds_string *second)
     first->size += second->size;
     first->data[first->size] = '\0';
   }
+  return 0;
+}
+
+int cds_string_push(struct cds_string *string, char chr) {
+  if (string->size + 1 == string->capacity) {
+    if (string->capacity == CDS_STRING_OPT_CAPACITY) {
+      string->capacity = CDS_STRING_OPT_CAPACITY << 1;
+      string->data = malloc(string->capacity);
+      if (string->data == NULL) {
+        return -1;
+      }
+      memmove(string->data, string->opt_data, CDS_STRING_OPT_CAPACITY);
+    } else {
+      string->capacity <<= 1;
+      string->data = realloc(string->data, string->capacity);
+      if (string->data == NULL) {
+        return -1;
+      }
+    }
+  }
+  string->data[string->size] = chr;
+  string->size++;
+  string->data[string->size] = '\0';
+  return -1;
+}
+
+int cds_string_pop(struct cds_string *string) {
+  if (string->size == 0) {
+    return -1;
+  }
+  string->size--;
+  cds_string_get(string)[string->size] = '\0';
+  return 0;
+}
+
+int cds_string_pop_length(struct cds_string *string, size_t length) {
+  if (string->size < length) {
+    return -1;
+  }
+  string->size -= length;
+  cds_string_get(string)[string->size] = '\0';
   return 0;
 }

@@ -98,7 +98,7 @@ void cds_string_delete(struct cds_string *string);
  * Notes: none
  *********************************************************************************************************
  */
-const char* cds_string_get(const struct cds_string *string);
+char* cds_string_get(const struct cds_string *string);
 
 /*
  *********************************************************************************************************
@@ -168,6 +168,53 @@ struct cds_array cds_string_split(const struct cds_string *string, char delimite
  */
 int cds_string_concat(struct cds_string *first, const struct cds_string *second);
 
-// TODO: push, pop, resize
+/*
+ *********************************************************************************************************
+ * 
+ *                                            CDS STRING PUSH
+ * 
+ * Description: Add one char at the end of the string
+ * 
+ * Arguments: string   A pointer to the struct cds_string instance.
+ *            chr      A char to be added to the string.
+ *
+ * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
+ * 
+ * Notes: The caller should ensure that the string pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+int cds_string_push(struct cds_string *string, char chr);
+
+/*
+ *********************************************************************************************************
+ * 
+ *                                             CDS STRING POP
+ * 
+ * Description: Remove one char at the end of the string
+ * 
+ * Arguments: string   A pointer to the struct cds_string instance.
+ *
+ * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
+ * 
+ * Notes: The caller should ensure that the string pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+int cds_string_pop(struct cds_string *string);
+
+/*
+ *********************************************************************************************************
+ * 
+ *                                         CDS STRING POP LENGTH
+ * 
+ * Description: Remove one char at the end of the string
+ * 
+ * Arguments: string   A pointer to the struct cds_string instance.
+ *
+ * Returns: 0 on success, -1 on failure (e.g., if memory allocation fails).
+ * 
+ * Notes: The caller should ensure that the string pointer is not NULL before calling this function.
+ *********************************************************************************************************
+ */
+int cds_string_pop_length(struct cds_string *string, size_t length);
 
 #endif

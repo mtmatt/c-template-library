@@ -5,6 +5,7 @@
 #include "test_stack.h"
 #include "test_list.h"
 #include "test_string.h"
+#include "test_heap.h"
 
 int main(void) {
   printf("**************************************************\n");
@@ -16,6 +17,7 @@ int main(void) {
   test_list_node();
   test_list();
   test_string();
+  test_heap();
   printf("**************************************************\n");
   printf("*                ALL TEST PASSED                 *\n");
   printf("**************************************************\n");
