@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "queue.h"
+#include "cds/queue.h"
 
 #ifdef CDS_QUEUE_IMPL_WITH_ARRAY
 

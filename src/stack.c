@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "stack.h"
+#include "cds/stack.h"
 
 struct cds_stack cds_stack_new(const size_t element_size) {
   struct cds_stack new_stack = {
