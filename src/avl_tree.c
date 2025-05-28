@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h> // For debugging, remove later if not needed
 
-#include "cds/avl_tree.h" // Should be "cds/avl_tree.h" if build system handles include paths
+#include "avl_tree.h" // Should be "cds/avl_tree.h" if build system handles include paths
 // Or "../include/cds/avl_tree.h" if compiling from src directly without include path setup.
 // Assuming "cds/avl_tree.h" is correct for the build environment.
 
@@ -170,7 +170,7 @@ static struct cds_avl_node* rotate_right(struct cds_avl_node *y) {
  * @param cmp Comparison function.
  * @return The new root of the balanced subtree.
  */
-static struct cds_avl_node* balance(struct cds_avl_node *node, int (*cmp)(const void*, const void*)) {
+static struct cds_avl_node* balance(struct cds_avl_node *node) {
     if (node == NULL) return node;
 
     update_height(node);
@@ -292,7 +292,7 @@ static struct cds_avl_node* insert_recursive(struct cds_avl_node *node, const vo
     if (node->left != NULL) node->left->parent = node;
     if (node->right != NULL) node->right->parent = node;
     
-    return balance(node, cmp);
+    return balance(node);
 }
 
 /**
@@ -442,7 +442,7 @@ static struct cds_avl_node* remove_recursive(struct cds_avl_node *node, const vo
     if (node->left != NULL) node->left->parent = node;
     if (node->right != NULL) node->right->parent = node;
 
-    return balance(node, cmp);
+    return balance(node);
 }
 
 

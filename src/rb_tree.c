@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "cds/rb_tree.h"
+#include "rb_tree.h"
 
 // --- Static Helper Prototypes ---
 static struct cds_rb_node* new_node(struct cds_rb_tree *tree, const void *key, const void *value);
