@@ -1,7 +1,7 @@
 #include <string.h>
 
-#include "heap.h"
-#include "array.h"
+#include "cds/heap.h"
+#include "cds/array.h"
 
 struct cds_heap cds_heap_new(size_t element_size, int (*cmp)(const void *, const void *)) {
   struct cds_heap new_heap = {

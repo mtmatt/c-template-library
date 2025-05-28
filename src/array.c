@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "array.h"
+#include "cds/array.h"
 
 struct cds_array cds_array_new(const size_t element_size) {
   struct cds_array new_array = {

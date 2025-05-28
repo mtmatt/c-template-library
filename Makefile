@@ -15,7 +15,7 @@ $(OUT_DIR)/$(NAME): $(OBJS) \
 	ar rcs $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c dirmake
-	$(CC) -c $(INC) $(CFLAGS) -o $@ $<
+	$(CC) -c $(INC) $(CFLAGS) -I$(TEST_INCLUDE_DIR) -o $@ $<
 
 $(INCLUDE_DIR)/%.h: $(SRC_DIR)/%.h
 	cp $< $@

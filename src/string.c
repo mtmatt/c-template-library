@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "string.h"
-#include "array.h"
+#include "cds/string.h"
+#include "cds/array.h"
 
 struct cds_string cds_string_new() {
   struct cds_string new_string = {

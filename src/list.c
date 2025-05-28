@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "list.h"
+#include "cds/list.h"
 
 struct cds_list_node* cds_list_node_new(void *data, const size_t element_size) {
   struct cds_list_node *new_node = malloc(sizeof(struct cds_list_node));

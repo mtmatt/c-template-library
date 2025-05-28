@@ -42,6 +42,8 @@ gcc -o main main.c -I/path/to/c-data-structures/include -L/path/to/c-data-struct
 3. Queue
 4. List (Doubly Link List)
 5. String
+6. AVL Tree
+7. Red-Black Tree
 
 ### Utilities
 
