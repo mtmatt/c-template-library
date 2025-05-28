@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h> // For debugging, remove later if not needed
 
-#include "avl_tree.h" // Should be "cds/avl_tree.h" if build system handles include paths
+#include "cds/avl_tree.h" // Should be "cds/avl_tree.h" if build system handles include paths
 // Or "../include/cds/avl_tree.h" if compiling from src directly without include path setup.
 // Assuming "cds/avl_tree.h" is correct for the build environment.
 
@@ -170,7 +170,7 @@ static struct cds_avl_node* rotate_right(struct cds_avl_node *y) {
  * @param cmp Comparison function.
  * @return The new root of the balanced subtree.
  */
-static struct cds_avl_node* balance(struct cds_avl_node *node) {
+static struct cds_avl_node* balance(struct cds_avl_node *node, int (*cmp)(const void*, const void*)) {
     if (node == NULL) return node;
 
     update_height(node);
@@ -292,7 +292,7 @@ static struct cds_avl_node* insert_recursive(struct cds_avl_node *node, const vo
     if (node->left != NULL) node->left->parent = node;
     if (node->right != NULL) node->right->parent = node;
     
-    return balance(node);
+    return balance(node, cmp);
 }
 
 /**
@@ -408,23 +408,30 @@ static struct cds_avl_node* remove_recursive(struct cds_avl_node *node, const vo
 
             // Copy the inorder successor's key and value to this node
             node->key = malloc(key_size);
-            node->value = malloc(element_size);
-            // TODO: Handle malloc failure for key/value copy
-            if (node->key == NULL || node->value == NULL) {
-                 // This is a problematic state. If key malloc fails, value is still old.
-                 // If value malloc fails, key is new.
-                 // Best to signal critical error. For now, this might lead to crash or corruption.
-                 // A robust implementation might need to revert or have a more complex recovery.
-                 if (node->key) free(node->key);
-                 if (node->value) free(node->value);
-                 // Cannot easily recover the original node's key/value here as they are freed.
-                 // This indicates a need for temporary storage if recovery is desired.
-                 // For now, assume mallocs succeed or live with potential issues on failure.
-                 *success_flag = -2; // Indicate critical internal error
-                 return node; // Or NULL to signify error, but tree is now inconsistent
+            if (node->key == NULL) {
+                // Failed to allocate memory for the key.
+                // The original node->key and node->value were already freed.
+                // Cannot proceed with this node, signal critical error.
+                *success_flag = -2; // Indicate critical internal error
+                // Returning node here is problematic as its key/value are in an invalid state.
+                // However, the original code returned node, so we maintain that behavior for now.
+                // The alternative is to return NULL, which might simplify some caller logic but
+                // means balance() won't run on this path.
+                return node; // Or NULL
             }
-
             memcpy(node->key, inorder_successor->key, key_size);
+
+            node->value = malloc(element_size);
+            if (node->value == NULL) {
+                // Failed to allocate memory for the value.
+                // The newly allocated node->key must be freed.
+                // The original node->key and node->value were already freed.
+                free(node->key);
+                node->key = NULL;
+                *success_flag = -2; // Indicate critical internal error
+                return node; // Or NULL
+            }
+            memcpy(node->value, inorder_successor->value, element_size);
             memcpy(node->value, inorder_successor->value, element_size);
 
             // Delete the inorder successor from the right subtree
@@ -442,7 +449,7 @@ static struct cds_avl_node* remove_recursive(struct cds_avl_node *node, const vo
     if (node->left != NULL) node->left->parent = node;
     if (node->right != NULL) node->right->parent = node;
 
-    return balance(node);
+    return balance(node, cmp);
 }
 
 

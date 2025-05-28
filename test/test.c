@@ -7,7 +7,6 @@
 #include "test_string.h"
 #include "test_heap.h"
 #include "test_avl_tree.h"
-#include "test_rb_tree.h"
 
 int main(void) {
   printf("**************************************************\n");
