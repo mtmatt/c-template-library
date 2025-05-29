@@ -141,4 +141,24 @@ size_t cds_array_size(const struct cds_array *array);
  */
 bool cds_array_empty(const struct cds_array *array);
 
+/*
+ *********************************************************************************************************
+ *
+ *                                            CDS ARRAY SORT
+ * 
+ * Description: Sorts the elements of the dynamic array using the Introsort algorithm.
+ * 
+ * Arguments: array   A pointer to the struct cds_array instance to be sorted.
+ *            compare A pointer to a function that compares two elements.
+ *                    The comparison function must return an integer less than, equal to, or greater 
+ *                    than zero if the first argument is considered to be respectively less than, 
+ *                    equal to, or greater than the second.
+ *
+ * Returns: 0 on success, -1 on failure (e.g., if memory allocation for the temporary buffer fails).
+ * 
+ * Notes: The sort is performed in-place.
+ *********************************************************************************************************
+ */
+int cds_array_sort(struct cds_array *array, int (*compare)(const void *, const void *));
+
 #endif

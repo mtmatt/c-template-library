@@ -8,13 +8,18 @@
 #include "test_heap.h"
 #include "test_avl_tree.h"
 #include "test_rb_tree.h"
+#include <stdlib.h> // Required for srand
+#include <time.h>   // Required for time
 
 int main(void) {
+  srand(time(NULL)); // Seed for rand() used in test_array_sort
+
   printf("**************************************************\n");
   printf("*                  TEST STARTS                   *\n");
   printf("**************************************************\n\n");
   test_stack();
   test_array();
+  test_array_sort(); // Added test suite for array sort
   test_queue();
   test_list_node();
   test_list();
