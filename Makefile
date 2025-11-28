@@ -13,6 +13,7 @@ TEST_INCLUDE_DIR = ./include
 
 $(OUT_DIR)/$(NAME): $(OBJS) \
     $(patsubst $(SRC_DIR)/%.h,$(INCLUDE_DIR)/%.h,$(wildcard $(SRC_DIR)/*.h))
+	rm -f $@
 	$(AR) rcs $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c dirmake

@@ -56,7 +56,7 @@ static void heapify(char *data, size_t n, size_t i, size_t element_size, cds_cmp
     }
 }
 
-static void heapsort(char *data, size_t n, size_t element_size, cds_cmp_func cmp) {
+static void heap_sort(char *data, size_t n, size_t element_size, cds_cmp_func cmp) {
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(data, n, i, element_size, cmp);
 
@@ -88,7 +88,7 @@ static void introsort_util(char *data, int low, int high, int depth_limit, size_
     }
 
     if (depth_limit == 0) {
-        heapsort(data + low * element_size, n, element_size, cmp);
+        heap_sort(data + low * element_size, n, element_size, cmp);
         return;
     }
 
