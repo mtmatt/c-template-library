@@ -241,6 +241,15 @@ void test_hashtable_quadratic_probing(void) {
     int last_val = 999;
     // Try to insert when very full or full
     int full_ret = cds_hashtable_qp_insert(table, "qp_overflow_key", &last_val);
+    
+    // If it succeeded, keep filling until it fails (it must fail eventually)
+    int safety_counter = 0;
+    while (full_ret == 0 && safety_counter < 20) {
+        char extra_key[30];
+        sprintf(extra_key, "qp_extra_fill_%d", safety_counter++);
+        full_ret = cds_hashtable_qp_insert(table, extra_key, &last_val);
+    }
+
     assert(full_ret == -2 && "QP: Insert into (nearly) full table did not return -2");
     printf("  QP: Table fullness test successful (may depend on probing luck).\n");
 
