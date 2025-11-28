@@ -1,19 +1,22 @@
 #include <stdio.h>
 
 #include "test_array.h"
-#include "test_queue.h"
-#include "test_stack.h"
-#include "test_list.h"
-#include "test_string.h"
-#include "test_heap.h"
 #include "test_avl_tree.h"
+#include "test_hashtable.h"
+#include "test_heap.h"
+#include "test_list.h"
+#include "test_queue.h"
 #include "test_rb_tree.h"
 #include "test_graph.h"
+#include "test_sort.h"
+#include "test_stack.h"
+#include "test_string.h"
 
 int main(void) {
   printf("**************************************************\n");
   printf("*                  TEST STARTS                   *\n");
   printf("**************************************************\n\n");
+  test_sort();
   test_stack();
   test_array();
   test_queue();
@@ -44,6 +47,17 @@ int main(void) {
   printf("\n--- Starting Graph Tests ---\n");
   test_graph();
   printf("--- Graph Tests Passed ---\n");
+
+  printf("\n--- Starting Hash Table Test ---\n\n");
+
+  test_hashtable_chaining();
+  test_hashtable_linear_probing();
+  test_hashtable_quadratic_probing();
+  test_hashtable_double_hashing();
+  test_hashtable_cuckoo();
+  test_hashtable_hopscotch();
+
+  printf("\n--- Hash Table Test Complete ---\n");
 
   printf("\n**************************************************\n");
   printf("*                ALL TEST PASSED                 *\n");
