@@ -1,4 +1,5 @@
 CC = gcc
+AR = /usr/bin/ar
 NAME = libcds.a
 CFLAGS = -Wall -Wextra -std=c11
 OBJ_DIR = ./obj
@@ -12,7 +13,7 @@ TEST_INCLUDE_DIR = ./include
 
 $(OUT_DIR)/$(NAME): $(OBJS) \
     $(patsubst $(SRC_DIR)/%.h,$(INCLUDE_DIR)/%.h,$(wildcard $(SRC_DIR)/*.h))
-	ar rcs $@ $(OBJS)
+	$(AR) rcs $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c dirmake
 	$(CC) -c $(INC) $(CFLAGS) -I$(TEST_INCLUDE_DIR) -o $@ $<
