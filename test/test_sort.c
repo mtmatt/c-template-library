@@ -7,7 +7,7 @@
 #include "cds/sort.h"
 #include "test_sort.h"
 
-int cmp_int(const void *a, const void *b) {
+static int cmp_int(const void *a, const void *b) {
     int arg1 = *(const int *)a;
     int arg2 = *(const int *)b;
     if (arg1 < arg2) return -1;

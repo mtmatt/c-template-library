@@ -44,7 +44,7 @@ void visit_int(const void *node) {
     // printf("Visited: %d\n", u);
 }
 
-int cmp_int(const void *a, const void *b) {
+static int cmp_int(const void *a, const void *b) {
     int ia = *(const int*)a;
     int ib = *(const int*)b;
     return ia - ib;
