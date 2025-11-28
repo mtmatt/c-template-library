@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+typedef int (*cds_cmp_func)(const void *a, const void *b);
+
 typedef struct cds_array {
   char *data;
   size_t size, capacity, element_size;

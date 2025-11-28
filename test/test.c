@@ -8,11 +8,13 @@
 #include "test_heap.h"
 #include "test_avl_tree.h"
 #include "test_rb_tree.h"
+#include "test_sort.h"
 
 int main(void) {
   printf("**************************************************\n");
   printf("*                  TEST STARTS                   *\n");
   printf("**************************************************\n\n");
+  test_sort();
   test_stack();
   test_array();
   test_queue();
