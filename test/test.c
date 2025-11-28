@@ -8,6 +8,7 @@
 #include "test_heap.h"
 #include "test_avl_tree.h"
 #include "test_rb_tree.h"
+#include "test_graph.h"
 
 int main(void) {
   printf("**************************************************\n");
@@ -38,6 +39,11 @@ int main(void) {
   test_rb_tree_edge_cases();
   test_rb_tree_random_operations();
   printf("--- RB Tree Tests Passed ---\n");
+
+  // Graph Tests
+  printf("\n--- Starting Graph Tests ---\n");
+  test_graph();
+  printf("--- Graph Tests Passed ---\n");
 
   printf("\n**************************************************\n");
   printf("*                ALL TEST PASSED                 *\n");

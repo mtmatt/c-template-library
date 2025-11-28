@@ -31,7 +31,7 @@ dirmake:
 .PHONY: clean test
 
 test: $(TEST_OBJS) $(OUT_DIR)/$(NAME)
-	$(CC) -I$(TEST_INCLUDE_DIR) -L$(OUT_DIR) -lcds -o ./test/test.exe $(TEST_OBJS)
+	$(CC) -I$(TEST_INCLUDE_DIR) -L$(OUT_DIR) -o ./test/test.exe $(TEST_OBJS) -lcds
 	@./test/test.exe
 clean:
 	rm -rf $(OBJ_DIR) $(OUT_DIR) $(TEST_DIR)/test.exe $(TEST_DIR)/*.o
